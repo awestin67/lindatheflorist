@@ -289,3 +289,19 @@ footer {
     .gallery-img { height: 300px; }
     .shop-card { padding: 1.5rem; }
 }
+
+/* Ny behållare för bild + text */
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling av bildtexten */
+figcaption {
+    text-align: center;
+    font-family: var(--font-serif); /* Samma snygga typsnitt som rubrikerna */
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-top: 0.8rem;
+}
