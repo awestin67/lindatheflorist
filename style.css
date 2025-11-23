@@ -178,3 +178,59 @@ footer {
     .nav-links { display: none; } /* Enkelhet: dölj meny på mobil i första versionen */
     header { justify-content: center; }
 }
+
+/* --- SHOP STYLING --- */
+.product-img {
+    width: 100%;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+}
+
+.shop-card.featured-product {
+    border: 2px solid var(--accent-color); /* Markera presentkortet lite extra */
+}
+
+.price {
+    display: block;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    color: var(--accent-color);
+}
+
+.small-text {
+    font-size: 0.8rem; 
+    margin-top: 1rem; 
+    color: #666;
+}
+
+/* Styling för de små produktkorten */
+.product-item {
+    background: white;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-item img {
+    width: 100%;
+    height: 250px; /* Fast höjd så de blir jämna */
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.btn-small {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--text-color);
+    color: white;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
