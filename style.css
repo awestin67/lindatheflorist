@@ -1,0 +1,180 @@
+/* --- RESET & FONTS --- */
+:root {
+    --bg-color: #f9f7f2; /* En mjuk, "pappers-liknande" ton, inte kritvit */
+    --text-color: #2c2c2c;
+    --accent-color: #6b705c; /* Muted olive green - naturlig känsla */
+    --link-color: #a5a58d;
+    --font-serif: 'Cormorant Garamond', serif; /* För rubriker (elegant) */
+    --font-sans: 'Lato', sans-serif; /* För brödtext (läsbar) */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-color);
+}
+
+/* --- HEADER --- */
+header {
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: rgba(249, 247, 242, 0.95); /* Semitransparent */
+    z-index: 100;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    /* Här kan vi lägga en bakgrundsbild senare om vi vill */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 2.5rem;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* --- GALLERY GRID --- */
+.gallery {
+    padding: 4rem 5%;
+}
+
+.gallery h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Placeholder för bilder innan vi har riktiga */
+.placeholder {
+    background-color: #e5e5e5;
+    height: 400px; /* Höga bilder passar blommor/konst */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+}
+
+/* --- SHOP SECTION --- */
+.shop-section {
+    background-color: #f2efeb; /* Lite mörkare ton för kontrast */
+    padding: 5rem 5%;
+    text-align: center;
+}
+
+.shop-card {
+    background: #fff;
+    padding: 3rem;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 3rem 5%;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 4rem;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .nav-links { display: none; } /* Enkelhet: dölj meny på mobil i första versionen */
+    header { justify-content: center; }
+}
