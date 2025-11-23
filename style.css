@@ -1,11 +1,11 @@
 /* --- RESET & FONTS --- */
 :root {
-    --bg-color: #f9f7f2; /* En mjuk, "pappers-liknande" ton, inte kritvit */
+    --bg-color: #f9f7f2; /* En mjuk, "pappers-liknande" ton */
     --text-color: #2c2c2c;
-    --accent-color: #6b705c; /* Muted olive green - naturlig känsla */
+    --accent-color: #6b705c; /* Muted olive green */
     --link-color: #a5a58d;
-    --font-serif: 'Cormorant Garamond', serif; /* För rubriker (elegant) */
-    --font-sans: 'Lato', sans-serif; /* För brödtext (läsbar) */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Lato', sans-serif;
 }
 
 * {
@@ -48,8 +48,9 @@ header {
     align-items: center;
     position: sticky;
     top: 0;
-    background-color: rgba(249, 247, 242, 0.95); /* Semitransparent */
+    background-color: rgba(249, 247, 242, 0.95);
     z-index: 100;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .logo {
@@ -80,7 +81,11 @@ header {
     align-items: center;
     text-align: center;
     padding: 0 1rem;
-    /* Här kan vi lägga en bakgrundsbild senare om vi vill */
+    /* Bakgrundsbild med mörk toning för läsbarhet */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white; /* Vit text mot bakgrunden */
 }
 
 .hero h1 {
@@ -88,23 +93,25 @@ header {
     margin-bottom: 1rem;
     max-width: 800px;
     line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-family: var(--font-serif);
     font-style: italic;
-    color: var(--accent-color);
+    color: #f2efeb;
     margin-bottom: 2.5rem;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
 }
 
-/* --- BUTTONS --- */
+/* --- BUTTONS (Global) --- */
 .btn {
     display: inline-block;
     padding: 1rem 2.5rem;
-    border: 1px solid var(--text-color);
+    border: 1px solid white; /* Vit ram på hero */
     background: transparent;
-    color: var(--text-color);
+    color: white;
     font-family: var(--font-sans);
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -114,11 +121,11 @@ header {
 }
 
 .btn:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
+    background-color: white;
+    color: var(--text-color);
 }
 
-/* --- GALLERY GRID --- */
+/* --- GALLERY SECTION --- */
 .gallery {
     padding: 4rem 5%;
 }
@@ -135,21 +142,31 @@ header {
     gap: 2rem;
 }
 
-/* Placeholder för bilder innan vi har riktiga */
+/* Styling för bilderna i galleriet */
+.gallery-img {
+    width: 100%;
+    height: 450px; /* Lite högre för dramatiskt intryck */
+    object-fit: cover;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.02);
+}
+
 .placeholder {
     background-color: #e5e5e5;
-    height: 400px; /* Höga bilder passar blommor/konst */
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #999;
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
 }
 
 /* --- SHOP SECTION --- */
 .shop-section {
-    background-color: #f2efeb; /* Lite mörkare ton för kontrast */
+    background-color: #f2efeb;
     padding: 5rem 5%;
     text-align: center;
 }
@@ -163,31 +180,54 @@ header {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* --- FOOTER --- */
-footer {
-    padding: 3rem 5%;
+.shop-card.featured-product {
+    border: 2px solid var(--accent-color);
+}
+
+/* Knoppen i shopen (Mörkare variant än Hero-knappen) */
+.shop-card .btn {
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+.shop-card .btn:hover {
+    background-color: var(--text-color);
+    color: white;
+}
+
+/* --- PRODUCTS & CARDS --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-item {
+    background: white;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    font-size: 0.9rem;
-    border-top: 1px solid #e5e5e5;
-    margin-top: 4rem;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
 }
 
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .nav-links { display: none; } /* Enkelhet: dölj meny på mobil i första versionen */
-    header { justify-content: center; }
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* --- SHOP STYLING --- */
-.product-img {
+.product-img, .product-item img {
     width: 100%;
+    height: auto;
+    object-fit: cover;
     border-radius: 2px;
     margin-bottom: 1rem;
 }
-
-.shop-card.featured-product {
-    border: 2px solid var(--accent-color); /* Markera presentkortet lite extra */
+/* Fixa höjd på korten i listan så de blir jämna */
+.product-item img {
+    height: 300px; 
 }
 
 .price {
@@ -203,34 +243,49 @@ footer {
     color: #666;
 }
 
-/* Styling för de små produktkorten */
-.product-item {
-    background: white;
-    padding: 1.5rem;
-    text-align: center;
-    border: 1px solid #ddd;
-    transition: transform 0.3s ease;
-}
-
-.product-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.product-item img {
-    width: 100%;
-    height: 250px; /* Fast höjd så de blir jämna */
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
+/* Liten köp-knapp */
 .btn-small {
     display: inline-block;
     margin-top: 0.5rem;
     padding: 0.5rem 1.5rem;
-    background-color: var(--text-color);
+    background-color: #2c2c2c;
     color: white;
+    text-decoration: none;
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+}
+
+.btn-small:hover {
+    background-color: var(--accent-color);
+}
+
+/* --- CONTACT & FOOTER --- */
+#contact .btn {
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+#contact .btn:hover {
+    background-color: var(--text-color);
+    color: white;
+}
+
+footer {
+    padding: 3rem 5%;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 4rem;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .nav-links { display: none; } /* Dölj meny på mobil tills vi bygger en hamburgare */
+    header { justify-content: center; }
+    
+    .gallery-img { height: 300px; }
+    .shop-card { padding: 1.5rem; }
 }
