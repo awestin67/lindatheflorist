@@ -82,7 +82,7 @@ header {
     text-align: center;
     padding: 0 1rem;
     /* Bakgrundsbild med mörk toning för läsbarhet */
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero.png');
     background-size: cover;
     background-position: center;
     color: white; /* Vit text mot bakgrunden */
