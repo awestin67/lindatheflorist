@@ -8,6 +8,13 @@
     --font-sans: 'Lato', sans-serif;
 }
 
+html, body {
+    overflow-x: hidden; /* Förbjuder sidscroll helt */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     scroll-behavior: smooth; /* Gör att sidan scrollar mjukt istället för att hoppa */
 }
@@ -290,24 +297,26 @@ footer {
     margin-top: 4rem;
 }
 
-/* --- MOBILE RESPONSIVE (Uppdaterad Version 3) --- */
+/* --- MOBILE RESPONSIVE (Version 4 - Final Fix) --- */
 @media (max-width: 768px) {
 
-    /* --- FIX 1: MENYN --- */
+    /* --- MENYN (Sticky igen, som du ville ha den) --- */
     header {
-        /* VIKTIGT: Vi tar bort "sticky" på mobilen. 
-           Nu ligger menyn först, och sen kommer bilden under. 
-           Inget täcks över. */
-        position: relative; 
-        
         flex-direction: column;
-        padding: 1.5rem 1rem;
-        gap: 1rem;
+        padding: 1rem;
+        gap: 0.5rem;
+        /* Se till att den alltid ligger överst */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        /* Viktigt: Bakgrundsfärg så inte texten under syns igenom */
+        background-color: rgba(249, 247, 242, 0.98); 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .logo {
-        font-size: 1.8rem; /* Lite större logga så den syns bra */
-        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        margin: 0;
     }
 
     .nav-links {
@@ -316,52 +325,48 @@ footer {
         justify-content: center;
         gap: 15px;
         width: 100%;
+        padding-bottom: 0.5rem;
     }
 
     .nav-links li a {
-        font-size: 0.9rem;
-        padding: 5px 10px;
-        background: rgba(255,255,255,0.5); /* Liten platta bakom länken för tydlighet */
-        border-radius: 4px;
+        font-size: 0.8rem;
+        padding: 5px;
     }
 
-    /* --- FIX 2: HERO-BILDEN --- */
+    /* --- HERO-BILDEN & TEXTEN --- */
     .hero {
-        /* Vi tar bort den fasta höjden och låter innehållet styra, 
-           men sätter en min-höjd så bilden syns även om texten är kort */
-        height: auto;
-        min-height: 500px; 
+        /* Vi minskar höjden lite så man ser att det finns mer innehåll under */
+        height: 80vh; 
+        min-height: 500px;
         
-        /* Justera padding så texten hamnar snyggt i mitten */
-        padding: 4rem 1rem;
+        /* VIKTIGT: Padding på sidorna (1.5rem) stoppar texten från att klippas.
+           Padding i toppen (160px) knuffar ner texten så den inte hamnar bakom menyn. */
+        padding: 160px 1.5rem 2rem 1.5rem;
         
-        /* Justera bilden: "center bottom" brukar vara bäst för blommor 
-           som växer nerifrån och upp. Då kapas toppen ("himlen") istället för blommorna. */
-        background-position: center bottom;
+        /* Centrera bilden */
+        background-position: center center;
     }
 
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem; /* Lite mindre text så långa ord får plats */
         line-height: 1.2;
+        width: 100%;     /* Se till att den håller sig inom ramen */
+        word-wrap: break-word; /* Bryt långa ord om det behövs */
     }
 
     .hero p {
         font-size: 1rem;
-        margin-bottom: 2rem;
+        max-width: 100%;
     }
 
-    /* --- ÖVRIGA JUSTERINGAR --- */
+    /* --- ÖVRIGT --- */
     .gallery, .shop-section {
-        padding: 3rem 1rem;
+        padding: 3rem 1.5rem; /* Mer luft på sidorna i resten av sidan också */
     }
     
-    .gallery-img, .product-item img {
-        height: auto;
-        max-height: 400px;
-    }
-    
-    .shop-card {
-        padding: 1.5rem;
+    /* Se till att inga bilder sticker ut utanför skärmen */
+    img {
+        max-width: 100%; 
     }
 }
 
