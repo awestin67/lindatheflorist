@@ -297,61 +297,66 @@ footer {
     margin-top: 4rem;
 }
 
-/* --- MOBILE RESPONSIVE (Version 4 - Final Fix) --- */
+/* --- MOBILE RESPONSIVE (Version 5 - "Snyggare meny") --- */
 @media (max-width: 768px) {
 
-    /* --- MENYN (Sticky igen, som du ville ha den) --- */
+    /* --- MENY-FIXEN --- */
     header {
         flex-direction: column;
         padding: 1rem;
         gap: 0.5rem;
-        /* Se till att den alltid ligger överst */
         position: sticky;
         top: 0;
         z-index: 1000;
-        /* Viktigt: Bakgrundsfärg så inte texten under syns igenom */
         background-color: rgba(249, 247, 242, 0.98); 
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .logo {
-        font-size: 1.5rem;
-        margin: 0;
+        font-size: 1.6rem;
+        margin-bottom: 0.2rem;
     }
 
     .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        /* HÄR ÄR NYHETEN: Vi använder "Grid" för att tvinga fram 2x2 rader */
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Två lika stora kolumner */
+        gap: 10px; /* Mellanrum mellan knapparna */
         width: 100%;
         padding-bottom: 0.5rem;
     }
 
-    .nav-links li a {
-        font-size: 0.8rem;
-        padding: 5px;
+    .nav-links li {
+        text-align: center; /* Centrera texten i varje ruta */
     }
 
-    /* --- HERO-BILDEN & TEXTEN --- */
+    .nav-links li a {
+        font-size: 0.85rem;
+        display: block; /* Gör hela ytan klickbar */
+        padding: 8px;
+        background-color: rgba(255,255,255,0.5); /* Liten platta bakom */
+        border-radius: 4px;
+    }
+
+    /* --- HERO-FIXEN --- */
     .hero {
-        /* Vi minskar höjden lite så man ser att det finns mer innehåll under */
-        height: 80vh; 
+        height: auto;
         min-height: 500px;
         
-        /* VIKTIGT: Padding på sidorna (1.5rem) stoppar texten från att klippas.
-           Padding i toppen (160px) knuffar ner texten så den inte hamnar bakom menyn. */
-        padding: 160px 1.5rem 2rem 1.5rem;
+        /* VIKTIGT: Vi minskade padding-top från 160px till 4rem.
+           Nu när menyn är vit och "knuffar" ner innehållet, 
+           behöver vi inte lika mycket tomrum inuti själva hero-delen. */
+        padding: 4rem 1.5rem 2rem 1.5rem;
         
-        /* Centrera bilden */
-        background-position: center center;
+        background-position: center bottom;
     }
 
     .hero h1 {
-        font-size: 2rem; /* Lite mindre text så långa ord får plats */
+        /* Vi minskar texten lite så det långa ordet ser snyggare ut */
+        font-size: 1.8rem; 
         line-height: 1.2;
-        width: 100%;     /* Se till att den håller sig inom ramen */
-        word-wrap: break-word; /* Bryt långa ord om det behövs */
+        margin-bottom: 1rem;
+        word-wrap: break-word; /* Säkerhet om ordet är för långt */
     }
 
     .hero p {
@@ -361,10 +366,9 @@ footer {
 
     /* --- ÖVRIGT --- */
     .gallery, .shop-section {
-        padding: 3rem 1.5rem; /* Mer luft på sidorna i resten av sidan också */
+        padding: 3rem 1.5rem;
     }
     
-    /* Se till att inga bilder sticker ut utanför skärmen */
     img {
         max-width: 100%; 
     }
